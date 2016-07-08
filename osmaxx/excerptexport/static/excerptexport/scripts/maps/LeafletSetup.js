@@ -1,1 +1,0 @@
-L.Path.CLIP_PADDING = 1.0;

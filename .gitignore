@@ -2,7 +2,6 @@
 *.db
 *~
 .*
-compose-env/
 
 # Documentation builds
 /html/
@@ -56,9 +55,6 @@ coverage.xml
 # Django stuff:
 *.log
 
-# Files of locally running osmaxx frontend instance:
-private_media/
-
 # Sphinx documentation
 docs/_build/
 
@@ -83,10 +79,7 @@ local/
 !.gitignore
 !.travis.yml
 !.coveragerc
-!osmaxx/conversion/converters/converter_garmin/command_line_utils/mkgmap/lib
-!osmaxx/conversion/converters/converter_garmin/command_line_utils/splitter/lib
 
-web_frontend/src/
 # ignore environment file for local production environment
 .env
 # ignore commonly used location of python virtualenv

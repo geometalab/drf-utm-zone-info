@@ -1,4 +1,0 @@
-# just a meta file to contract all requirements in one file
--r requirements.txt
--r requirements-mediator.txt
--r requirements-local.txt

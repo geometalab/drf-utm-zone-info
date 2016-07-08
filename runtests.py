@@ -12,7 +12,7 @@ PYTEST_ARGS = {
     'fast': ['tests', '-q'],
 }
 
-MODULES_TO_LINT = ['osmaxx', 'tests', 'setup.py', 'runtests.py', ]
+MODULES_TO_LINT = ['osmaxx', 'tests', 'runtests.py', ]
 FLAKE8_ARGS = MODULES_TO_LINT + ['--ignore=E501']
 
 sys.path.append(os.path.dirname(__file__))
