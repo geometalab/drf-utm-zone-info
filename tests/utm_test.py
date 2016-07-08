@@ -9,7 +9,7 @@ from django.contrib.gis.geos.collections import GeometryCollection
 from sqlalchemy import select, func
 from sqlalchemy.engine.url import URL as DBURL
 
-from osmaxx.geodesy.coordinate_reference_system import UTMZone, wrap_longitude_degrees, utm_zones_for_representing, \
+from utm_zone_info.coordinate_reference_system import UTMZone, wrap_longitude_degrees, utm_zones_for_representing, \
     UTM_ZONE_NUMBERS, WGS_84
 from tests.utils import slow
 
