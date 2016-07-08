@@ -1,7 +1,7 @@
 from django.contrib.gis.geos.collections import MultiPolygon
 from django.contrib.gis.geos.polygon import Polygon
 
-from osmaxx.conversion_api.coordinate_reference_systems import WGS_84
+WGS_84 = 4326
 
 MIN_LONGITUDE_DEGREES = -180
 MAX_LONGITUDE_DEGREES = +180
