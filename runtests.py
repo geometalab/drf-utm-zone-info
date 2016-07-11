@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python3
 from __future__ import print_function
 
 import pytest
@@ -12,8 +12,8 @@ PYTEST_ARGS = {
     'fast': ['tests', '-q'],
 }
 
-FLAKE8_ARGS = ['utm_zone_info', 'tests', '--ignore=E501']
-
+MODULES_TO_LINT = ['utm_zone_info', 'tests', 'runtests.py', ]
+FLAKE8_ARGS = MODULES_TO_LINT + ['--ignore=E501']
 
 sys.path.append(os.path.dirname(__file__))
 
@@ -49,9 +49,9 @@ if __name__ == "__main__":
     try:
         sys.argv.remove('--nolint')
     except ValueError:
-        run_flake8 = True
+        run_lint = True
     else:
-        run_flake8 = False
+        run_lint = False
 
     try:
         sys.argv.remove('--lintonly')
@@ -66,7 +66,14 @@ if __name__ == "__main__":
         style = 'default'
     else:
         style = 'fast'
-        run_flake8 = False
+        run_lint = False
+
+    try:
+        sys.argv.remove('--no-coverage')
+    except ValueError:
+        with_coverage = True
+    else:
+        with_coverage = False
 
     if len(sys.argv) > 1:
         pytest_args = sys.argv[1:]
@@ -86,6 +93,8 @@ if __name__ == "__main__":
         pytest_args = PYTEST_ARGS[style]
 
     if run_tests:
+        if with_coverage:
+            pytest_args.extend(['--cov', 'utm_zone_info'])
         exit_on_failure(pytest.main(pytest_args))
-    if run_flake8:
+    if run_lint:
         exit_on_failure(flake8_main(FLAKE8_ARGS))
