@@ -7,7 +7,7 @@ MIN_LONGITUDE_DEGREES = -180
 MAX_LONGITUDE_DEGREES = +180
 
 
-class UTMZone:
+class UTMZone(object):
     """
     Universal Transverse Mercator (UTM) zone
     """
