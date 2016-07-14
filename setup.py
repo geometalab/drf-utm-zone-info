@@ -63,6 +63,15 @@ if sys.argv[-1] == 'publish':
     print("  git push --tags")
     sys.exit()
 
+test_requirements = [
+    'pytest',
+    'pytest-django',
+    'pytest-cov',
+    'flake8',
+    'django-environ',
+    'GeoAlchemy2',
+    'psycopg2',  # for PostgreSQL support in SQLAlchemy and Django
+]
 
 setup(
     name=name,
@@ -74,7 +83,15 @@ setup(
     author_email=author_email,
     packages=get_packages(package),
     package_data=get_package_data(package),
-    install_requires=[],
+    install_requires=[
+        'Django>=1.6,<1.10',
+        'djangorestframework>=3.2,<3.4',
+    ],
+    setup_requires=['pytest-runner'],
+    tests_require=test_requirements,
+    extras_require=dict(
+        testing=test_requirements,
+    ),
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Environment :: Web Environment',

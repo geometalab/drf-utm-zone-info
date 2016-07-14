@@ -1,15 +1,4 @@
-# Minimum Django and REST framework version
-Django>=1.9,<1.10
-djangorestframework>=3.2,<3.4
-
-# Test requirements
-pytest-django
-pytest
-pytest-cov
-flake8
-django-environ
-GeoAlchemy2
-psycopg2  # for PostgreSQL support in SQLAlchemy and Django
+-e .[testing]  # see setup.py
 
 # wheel for PyPI installs
 wheel
