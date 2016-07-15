@@ -1,0 +1,7 @@
+-e .[testing]  # see setup.py
+
+# wheel for PyPI installs
+wheel
+
+# MkDocs for documentation previews/deploys
+mkdocs

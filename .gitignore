@@ -3,85 +3,18 @@
 *~
 .*
 
-# Documentation builds
-/html/
-__pycache__/
-*.py[cod]
-# `coverage` reports
+html/
 htmlcov/
 coverage/
-*.so
-
-# Distribution / packaging
-.Python
-env/
 build/
-develop-eggs/
 dist/
-downloads/
-eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
 *.egg-info/
 MANIFEST
-.installed.cfg
-*.egg
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.cache
-nosetests.xml
-coverage.xml
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Django test database
-source/test_db.sqlite3
-
-# linux trash
-*.*~
-
-# venv
 bin/
 include/
 lib/
 local/
 
-
-# Hidden by naming convention, but tracked anyway:
-!.dockerignore
 !.gitignore
 !.travis.yml
-!.coveragerc
-
-# ignore environment file for local production environment
-.env
-# ignore commonly used location of python virtualenv
-.venv/
-*.log

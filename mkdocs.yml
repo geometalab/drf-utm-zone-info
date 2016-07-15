@@ -1,0 +1,4 @@
+site_name: geometalab.drf-utm-zone-info
+site_description: Django REST framework app providing information about Universal Transverse Mercator (UTM) zones
+repo_url: https://github.com/geometalab/drf-utm-zone-info
+site_dir: html
