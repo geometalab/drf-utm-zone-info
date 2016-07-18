@@ -85,7 +85,7 @@ setup(
     package_data=get_package_data(package),
     install_requires=[
         'Django>=1.6,<1.10',
-        'djangorestframework>=2.4,<3.4',
+        'djangorestframework>=3.0,<3.4',
     ],
     setup_requires=['pytest-runner'],
     tests_require=test_requirements,
