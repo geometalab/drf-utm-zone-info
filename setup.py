@@ -67,7 +67,7 @@ test_requirements = [
     'pytest',
     'pytest-django',
     'pytest-cov',
-    'mock',
+    'pytest-mock',
     'flake8',
     'django-environ',
     'GeoAlchemy2',
