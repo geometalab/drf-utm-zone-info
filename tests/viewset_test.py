@@ -12,7 +12,7 @@ def test_posting_valid_data_returns_utm_zones(mocker, api_client, utm_zone_post_
     post_viewset_result = api_client.post(utm_zone_post_url, payload, format='json')
     expected_result = {'utm_zone_srids': [expected_srid]}
     assert post_viewset_result.status_code == status.HTTP_200_OK
-    assert post_viewset_result.json() == expected_result
+    assert post_viewset_result.data == expected_result
 
 
 def test_posting_invalid_data_returns_error(api_client, utm_zone_post_url, invalid_payload):
@@ -39,8 +39,8 @@ _valid_geoJSON = {
     dict(geom=None, srid=''),
     dict(geom='', srid=4326),
     dict(geom=_valid_geoJSON, srid=''),
-    dict(geom=_valid_geoJSON.copy().pop('type'), srid=4326),
-    dict(geom=_valid_geoJSON.copy().pop('coordinates'), srid=4326),
+    dict(geom={key: value for key, value in _valid_geoJSON.items() if key != 'type'}, srid=4326),
+    dict(geom={key: value for key, value in _valid_geoJSON.items() if key != 'coordinates'}, srid=4326),
 ])
 def invalid_payload(request):
     return request.param
