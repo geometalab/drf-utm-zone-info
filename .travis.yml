@@ -31,7 +31,7 @@ before_install:
   - sleep 10
 
 install:
-  - pip install tox
+  - pip install detox
 
 script:
-    - tox -e $TOX_ENV
+    - detox -e $TOX_ENV
