@@ -7,7 +7,7 @@ from utm_zone_info.serializers import GeometrySerializer
 
 class UTMZoneInfoViewSet(viewsets.ViewSet):
     """
-    A simple ViewSet accepting Points and returning valid utm_zones.
+    A simple ViewSet accepting a geometry and returning SRIDs of UTM Zones that can represent this geometry.
     """
 
     serializer_class = GeometrySerializer
