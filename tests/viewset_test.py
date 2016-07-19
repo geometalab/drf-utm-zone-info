@@ -15,7 +15,7 @@ def test_posting_valid_data_returns_utm_zones(api_client, utm_zone_post_url, pay
         post_viewset_result = api_client.post(utm_zone_post_url, payload, format='json')
         expected_result = {'utm_zone_srids': [expected_srid]}
         assert post_viewset_result.status_code == status.HTTP_200_OK
-        assert post_viewset_result.json() == expected_result
+        assert post_viewset_result.data == expected_result
 
 
 def test_posting_invalid_data_returns_error(api_client, utm_zone_post_url, invalid_payload):
