@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.response import Response
 
 
 class UTMZoneInfoViewSet(viewsets.ViewSet):
@@ -7,4 +8,4 @@ class UTMZoneInfoViewSet(viewsets.ViewSet):
     """
 
     def create(self, request):
-        pass
+        return Response(data={})
