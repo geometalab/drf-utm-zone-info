@@ -42,8 +42,8 @@ _valid_geoJSON = {
     dict(geom=None, srid=''),
     dict(geom='', srid=4326),
     dict(geom=_valid_geoJSON, srid=''),
-    dict(geom=_valid_geoJSON.copy().pop('type'), srid=4326),
-    dict(geom=_valid_geoJSON.copy().pop('coordinates'), srid=4326),
+    dict(geom={key: value for key, value in _valid_geoJSON.items() if key != 'type'}, srid=4326),
+    dict(geom={key: value for key, value in _valid_geoJSON.items() if key != 'coordinates'}, srid=4326),
 ])
 def invalid_payload(request):
     return request.param
