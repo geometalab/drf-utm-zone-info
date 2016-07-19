@@ -16,8 +16,7 @@ class UTMZoneInfoViewSet(viewsets.ViewSet):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             geometry = serializer.validated_data['geom']
-            if geometry.srid is None:
-                geometry.srid = serializer.validated_data['srid']
+            geometry.srid = serializer.validated_data['srid']
             data = dict(
                 utm_zone_srids=[zone.srid for zone in utm_zones_for_representing(geometry)]
             )
