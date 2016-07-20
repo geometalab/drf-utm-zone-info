@@ -5,12 +5,12 @@ from rest_framework.test import APIClient
 
 
 def test_posting_valid_data_returns_utm_zones(mocker, api_client, utm_zone_post_url, payload):
-    expected_srid = 123456
+    utm_zone_srid = 123456
     utm_zone_mock = mocker.Mock()
-    utm_zone_mock.srid = expected_srid
+    utm_zone_mock.srid = utm_zone_srid
     mocker.patch('utm_zone_info.viewsets.utm_zones_for_representing', return_value=[utm_zone_mock])
     post_viewset_result = api_client.post(utm_zone_post_url, payload, format='json')
-    expected_result = {'utm_zone_srids': [expected_srid]}
+    expected_result = {'utm_zone_srids': [utm_zone_srid]}
     assert post_viewset_result.status_code == status.HTTP_200_OK
     assert post_viewset_result.data == expected_result
 
