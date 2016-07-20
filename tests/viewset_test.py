@@ -1,5 +1,6 @@
 import pytest
 from django.contrib.gis.geos import Polygon
+from hamcrest import match_equality, all_of, has_property
 from rest_framework import status
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
@@ -12,9 +13,14 @@ def test_posting_valid_data_returns_utm_zones(mocker, api_client, utm_zone_post_
     utm_zone_mock.srid = 123456
     mocker.patch('utm_zone_info.viewsets.utm_zones_for_representing', return_value=[utm_zone_mock])
     post_viewset_result = api_client.post(utm_zone_post_url, payload, format='json')
-    utm_zone_info.viewsets.utm_zones_for_representing.assert_called_once_with(Polygon(*_valid_geoJSON['coordinates']))
-    args, kwargs = utm_zone_info.viewsets.utm_zones_for_representing.call_args
-    assert args[0].srid == 4326
+    utm_zone_info.viewsets.utm_zones_for_representing.assert_called_once_with(
+        match_equality(
+            all_of(
+                Polygon(*_valid_geoJSON['coordinates']),
+                has_property('srid', 4326),
+            )
+        )
+    )
     expected_result = {'utm_zone_srids': [utm_zone_mock.srid]}
     assert post_viewset_result.status_code == status.HTTP_200_OK
     assert post_viewset_result.data == expected_result
