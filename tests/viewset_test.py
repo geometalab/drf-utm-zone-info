@@ -13,6 +13,16 @@ def test_posting_valid_data_returns_utm_zones(mocker, api_client, utm_zone_post_
     utm_zone_mock.srid = 123456
     mocker.patch('utm_zone_info.viewsets.utm_zones_for_representing', return_value=[utm_zone_mock])
     post_viewset_result = api_client.post(utm_zone_post_url, payload, format='json')
+
+    import sys
+    import inspect
+    pytest_mock = sys.modules[utm_zone_info.viewsets.utm_zones_for_representing.assert_called_once_with.__module__]
+    mock_module = pytest_mock.mock_module
+    print(mock_module)
+    print(mock_module.__version__)
+    print(inspect.getsource(pytest_mock._mock_module_originals["assert_called_with"]))
+    print(inspect.getsource(pytest_mock.assert_wrapper))
+
     utm_zone_info.viewsets.utm_zones_for_representing.assert_called_once_with(
         match_equality(
             all_of(
