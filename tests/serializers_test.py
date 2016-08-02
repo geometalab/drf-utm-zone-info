@@ -21,9 +21,12 @@ def test_deserialize_point(geos_geometry, geos_geometry_representation):
 
 @pytest.fixture
 def geos_geometry():
-    return Point(5, -23)
+    return dict(
+        geom=Point(5, -23),
+        srid=4326,
+    )
 
 
 @pytest.fixture
 def geos_geometry_representation():
-    return {'geom': GeoJsonDict([('type', 'Point'), ('coordinates', (5.0, -23.0))])}
+    return {'geom': GeoJsonDict([('type', 'Point'), ('coordinates', (5.0, -23.0))]), 'srid': 4326}

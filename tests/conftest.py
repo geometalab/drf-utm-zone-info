@@ -43,4 +43,5 @@ def pytest_configure():
             'django.contrib.auth.hashers.MD5PasswordHasher',
             'django.contrib.auth.hashers.CryptPasswordHasher',
         ),
+        ROOT_URLCONF='tests.urls',
     )
