@@ -22,7 +22,7 @@ Django REST framework app providing information about Universal Transverse Merca
 ## Requirements
 
 * Python (2.7, 3.3, 3.4)
-* Django (1.6, 1.7)
+* Django (1.7)
 
 ## Installation
 
