@@ -21,8 +21,10 @@ Django REST framework app providing information about Universal Transverse Merca
 
 ## Requirements
 
-* Python (2.7, 3.3, 3.4)
-* Django (1.6, 1.7)
+* Python (2.7, 3.4, 3.5)
+* Django (1.7, 1.8, 1.9)
+* Django REST Framework (3.0, 3.1, 3.2, 3.3)
+* Geographic add-ons for Django Rest Framework (`djangorestframework-gis`)
 
 ## Installation
 
