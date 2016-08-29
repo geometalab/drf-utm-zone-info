@@ -1,7 +1,3 @@
-import os
-
-test_data_dir = os.path.join(os.path.dirname(__file__), 'test_data')
-
 postgres_container_userland_port = 65432  # required for travis, so using it everywhere
 
 
@@ -27,6 +23,25 @@ def pytest_configure():
         USE_I18N=True,
         USE_L10N=True,
         INSTALLED_APPS=(
+            'django.contrib.auth',
+            'django.contrib.contenttypes',
             'django.contrib.gis',
+            'django.contrib.sessions',
+            'django.contrib.sites',
+            'django.contrib.messages',
+            'django.contrib.staticfiles',
+
+            'rest_framework',
+            'rest_framework.authtoken',
+            'tests',
         ),
+        PASSWORD_HASHERS=(
+            'django.contrib.auth.hashers.SHA1PasswordHasher',
+            'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+            'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+            'django.contrib.auth.hashers.BCryptPasswordHasher',
+            'django.contrib.auth.hashers.MD5PasswordHasher',
+            'django.contrib.auth.hashers.CryptPasswordHasher',
+        ),
+        ROOT_URLCONF='tests.urls',
     )

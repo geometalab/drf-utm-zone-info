@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 from __future__ import print_function
 
 import pytest
@@ -12,7 +12,7 @@ PYTEST_ARGS = {
     'fast': ['tests', '-q'],
 }
 
-MODULES_TO_LINT = ['osmaxx', 'tests', 'runtests.py', ]
+MODULES_TO_LINT = ['utm_zone_info', 'tests', 'runtests.py', ]
 FLAKE8_ARGS = MODULES_TO_LINT + ['--ignore=E501']
 
 sys.path.append(os.path.dirname(__file__))
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
     if run_tests:
         if with_coverage:
-            pytest_args.extend(['--cov', 'osmaxx'])
+            pytest_args.extend(['--cov', 'utm_zone_info'])
         exit_on_failure(pytest.main(pytest_args))
     if run_lint:
         exit_on_failure(flake8_main(FLAKE8_ARGS))
