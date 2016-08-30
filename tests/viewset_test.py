@@ -10,10 +10,10 @@ import utm_zone_info
 def test_posting_valid_data_returns_utm_zones(mocker, api_client, utm_zone_post_url, payload):
     utm_zone_mock = mocker.Mock()
     utm_zone_mock.srid = 123456
-    mocker.patch('utm_zone_info.viewsets.utm_zones_for_representing', return_value=[utm_zone_mock])
+    mocker.patch('utm_zone_info.views.utm_zones_for_representing', return_value=[utm_zone_mock])
     post_viewset_result = api_client.post(utm_zone_post_url, payload, format='json')
-    utm_zone_info.viewsets.utm_zones_for_representing.assert_called_once_with(Polygon(*_valid_geoJSON['coordinates']))
-    args, kwargs = utm_zone_info.viewsets.utm_zones_for_representing.call_args
+    utm_zone_info.views.utm_zones_for_representing.assert_called_once_with(Polygon(*_valid_geoJSON['coordinates']))
+    args, kwargs = utm_zone_info.views.utm_zones_for_representing.call_args
     assert args[0].srid == 4326
     assert post_viewset_result.status_code == status.HTTP_200_OK
     assert post_viewset_result.data == {'utm_zone_srids': [utm_zone_mock.srid]}
@@ -64,4 +64,4 @@ def api_client():
 
 @pytest.fixture
 def utm_zone_post_url():
-    return reverse('utm_zone_info:utm_zone_info-list')
+    return reverse('utm_zone_info:utm-zone-info')
