@@ -1,19 +1,20 @@
-from rest_framework import status, viewsets
+from rest_framework import permissions
+from rest_framework import status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from utm_zone_info.coordinate_reference_system import utm_zones_for_representing
 from utm_zone_info.serializers import GeometrySerializer
 
 
-class UTMZoneInfoViewSet(viewsets.ViewSet):
+class UTMZoneSRIDView(APIView):
     """
-    A simple ViewSet accepting a geometry and returning SRIDs of UTM Zones that can represent this geometry.
+    A simple View accepting a geometry and returning SRIDs of UTM Zones that can represent this geometry.
     """
+    permission_classes = (permissions.AllowAny,)
 
-    serializer_class = GeometrySerializer
-
-    def create(self, request):
-        serializer = self.serializer_class(data=request.data)
+    def post(self, request, *args, **kwargs):
+        serializer = GeometrySerializer(data=request.data)
         if serializer.is_valid():
             geometry = serializer.validated_data['geom']
             geometry.srid = serializer.validated_data['srid']
@@ -23,3 +24,4 @@ class UTMZoneInfoViewSet(viewsets.ViewSet):
             return Response(data=data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+utm_zone_info = UTMZoneSRIDView.as_view()
