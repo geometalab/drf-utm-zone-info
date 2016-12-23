@@ -85,7 +85,7 @@ setup(
     packages=get_packages(package),
     package_data=get_package_data(package),
     install_requires=[
-        'Django>=1.7,<1.10',
+        'Django>=1.7,<1.11',
         'djangorestframework>=3.0,<3.4',
         'djangorestframework-gis',
     ],
