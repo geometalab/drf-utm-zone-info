@@ -29,6 +29,8 @@ before_install:
   - docker run -d -p "127.0.0.1:54321:5432" -e POSTGRES_DB='postgres' --name pg_tests geometalab/postgis-with-translit
   - docker ps -a
   - sleep 10
+  - sudo apt-get -qq update
+  - sudo apt-get install -y binutils libproj-dev gdal-bin
 
 install:
   - pip install detox
