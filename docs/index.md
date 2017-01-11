@@ -26,6 +26,12 @@ Django REST framework app providing information about Universal Transverse Merca
 * Django REST Framework (3.0, 3.1, 3.2, 3.3, 3.4, 3.5)
 * Geographic add-ons for Django Rest Framework (`djangorestframework-gis`)
 
+### Note
+
+Not all of these versions are compatible to each other.
+Please consult [`.travis.yml`](https://github.com/geometalab/drf-utm-zone-info/blob/master/.travis.yml)
+and [`tox.ini`](https://github.com/geometalab/drf-utm-zone-info/blob/master/tox.ini) for tested combinations.
+
 ## Installation
 
 Install using `pip`...
