@@ -24,4 +24,6 @@ class UTMZoneSRIDView(APIView):
             return Response(data=data)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 utm_zone_info = UTMZoneSRIDView.as_view()

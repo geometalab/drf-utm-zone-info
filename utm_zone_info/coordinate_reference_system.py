@@ -83,6 +83,7 @@ class UTMZone(object):
             hemisphere=repr(self.hemisphere),
         )
 
+
 UTM_ZONE_NUMBERS = UTMZone.VALID_ZONE_NUMBERS
 ALL_UTM_ZONES = frozenset(
     UTMZone(hs, nr)
