@@ -12,9 +12,18 @@ Requirements
 ------------
 
 -  Python (2.7, 3.4, 3.5)
--  Django (1.7, 1.8, 1.9)
--  Django REST Framework (3.0, 3.1, 3.2, 3.3)
+-  Django (1.8, 1.9, 1.10)
+-  Django REST Framework (3.0, 3.1, 3.2, 3.3, 3.4, 3.5)
 -  Geographic add-ons for Django Rest Framework (``djangorestframework-gis``)
+
+.. note::
+   Not all of these versions are compatible to each other.
+   Please consult |.travis.yml|_ and |tox.ini|_ for tested combinations.
+
+.. |.travis.yml| replace:: ``.travis.yml``
+.. _.travis.yml: .travis.yml
+.. |tox.ini| replace:: ``tox.ini``
+.. _tox.ini: tox.ini
 
 Installation
 ------------
