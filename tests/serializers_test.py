@@ -14,7 +14,7 @@ def test_serialize_point(geos_geometry, geos_geometry_representation):
 def test_deserialize_point(geos_geometry, geos_geometry_representation):
     representation = geos_geometry_representation
     serializer = GeometrySerializer(data=representation)
-    assert serializer.is_valid()
+    assert serializer.is_valid(), "point serializer invalid: {}".format(serializer.errors)
     native_output = serializer.validated_data
     assert native_output == geos_geometry
 
