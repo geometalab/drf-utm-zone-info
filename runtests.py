@@ -8,8 +8,8 @@ import subprocess
 
 
 PYTEST_ARGS = {
-    'default': ['tests'],
-    'fast': ['tests', '-q'],
+    'default': ['tests', '-x', '-k', 'test_transformation_to_utm_with_geodjango_geos'],
+    'fast': ['tests', '-x', '-q', '-k', 'test_transformation_to_utm_with_geodjango_geos'],
 }
 
 MODULES_TO_LINT = ['utm_zone_info', 'tests', 'runtests.py', ]

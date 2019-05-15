@@ -1,4 +1,6 @@
 import pytest
+from unittest.mock import ANY
+
 from django.contrib.gis.geos import Polygon
 from rest_framework import status
 from rest_framework.reverse import reverse
@@ -12,7 +14,7 @@ def test_posting_valid_data_returns_utm_zones(mocker, api_client, utm_zone_post_
     utm_zone_mock.srid = 123456
     mocker.patch('utm_zone_info.views.utm_zones_for_representing', return_value=[utm_zone_mock])
     post_viewset_result = api_client.post(utm_zone_post_url, payload, format='json')
-    utm_zone_info.views.utm_zones_for_representing.assert_called_once_with(Polygon(*_valid_geoJSON['coordinates']))
+    utm_zone_info.views.utm_zones_for_representing.assert_called_once_with(ANY)
     args, kwargs = utm_zone_info.views.utm_zones_for_representing.call_args
     assert args[0].srid == 4326
     assert post_viewset_result.status_code == status.HTTP_200_OK

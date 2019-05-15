@@ -39,20 +39,20 @@ class UTMZone(object):
     @property
     def _computed_domain(self):
         xmin, ymin, xmax, ymax = (
-            wrap_longitude_degrees(self.central_meridian_longitude_degrees - self.MAX_LONGITUDE_OFFSET),
             -90,
-            wrap_longitude_degrees(self.central_meridian_longitude_degrees + self.MAX_LONGITUDE_OFFSET),
+            wrap_longitude_degrees(self.central_meridian_longitude_degrees - self.MAX_LONGITUDE_OFFSET),
             90,
+            wrap_longitude_degrees(self.central_meridian_longitude_degrees + self.MAX_LONGITUDE_OFFSET),
         )
-        if xmin <= xmax:
+        if ymin <= ymax:
             domain = Polygon.from_bbox((xmin, ymin, xmax, ymax))
             domain.srid = WGS_84
             return domain
         else:
             # cut at idealized international date line
             return MultiPolygon(
-                Polygon.from_bbox((xmin, ymin, MAX_LONGITUDE_DEGREES, ymax)),
-                Polygon.from_bbox((MIN_LONGITUDE_DEGREES, ymin, xmax, ymax)),
+                Polygon.from_bbox((xmin, ymin, xmax, MAX_LONGITUDE_DEGREES)),
+                Polygon.from_bbox((xmin, MIN_LONGITUDE_DEGREES, xmax, ymax)),
                 srid=WGS_84,
             )
 

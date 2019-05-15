@@ -71,7 +71,7 @@ test_requirements = [
     'flake8',
     'django-environ',
     'GeoAlchemy2',
-    'psycopg2',  # for PostgreSQL support in SQLAlchemy and Django
+    'psycopg2-binary',  # for PostgreSQL support in SQLAlchemy and Django
 ]
 
 setup(
@@ -85,8 +85,8 @@ setup(
     packages=get_packages(package),
     package_data=get_package_data(package),
     install_requires=[
-        'Django>=1.8,<1.11',
-        'djangorestframework>=3.0,<3.6',
+        'Django>=1.11,<2.0.0',
+        'djangorestframework>=3.9,<4.0.0',
         'djangorestframework-gis',
     ],
     setup_requires=['pytest-runner'],
@@ -102,12 +102,9 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Internet :: WWW/HTTP',
     ]
 )

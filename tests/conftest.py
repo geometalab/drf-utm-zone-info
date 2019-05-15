@@ -1,6 +1,3 @@
-postgres_container_userland_port = 65432  # required for travis, so using it everywhere
-
-
 def pytest_configure():
     from django.conf import settings
     import environ
@@ -14,8 +11,8 @@ def pytest_configure():
                 'NAME': 'postgres',
                 'USER': 'postgres',
                 'PASSWORD': 'postgres',
-                'PORT': '54321',
-                'HOST': '127.0.0.1',
+                'PORT': '5432',
+                'HOST': 'database',
             }
         },
         SITE_ID=1,

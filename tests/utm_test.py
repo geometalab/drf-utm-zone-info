@@ -37,7 +37,9 @@ def test_utm_zone_treats_untransformable_geom_as_unrepresentable(untransformable
     assert not utm_zone.can_represent(untransformable_geom)
 
 
+# @pytest.mark.xfail(reason='gdal 3.0 seems to break this')
 def test_transformation_to_utm_with_geodjango_geos(transformable_geom, utm_zone):
+    print(transformable_geom, 'zone:', utm_zone)
     transformable_geom.transform(utm_zone.srid)
 
 
@@ -90,15 +92,15 @@ def transformable_geom(request, transformable_point):
 def untransformable_point(transformable_point):
     # antipodal point of a transformable point
     return Point(
-        x=wrap_longitude_degrees(transformable_point.x + 180),
-        y=-transformable_point.y,
+        x=-transformable_point.x,
+        y=wrap_longitude_degrees(transformable_point.y + 180),
         srid=WGS_84,
     )
 
 
 @pytest.fixture
 def transformable_point(transformable_point_longitude_degrees, transformable_point_latitude_degrees):
-    return Point(transformable_point_longitude_degrees, transformable_point_latitude_degrees, srid=WGS_84)
+    return Point(transformable_point_latitude_degrees, transformable_point_longitude_degrees, srid=WGS_84)
 
 
 @pytest.fixture(params=[-UTMZone.MAX_LONGITUDE_OFFSET, -23.0, 0, UTMZone.MAX_LONGITUDE_OFFSET])

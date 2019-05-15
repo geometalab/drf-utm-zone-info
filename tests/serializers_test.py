@@ -29,4 +29,4 @@ def geos_geometry():
 
 @pytest.fixture
 def geos_geometry_representation():
-    return {'geom': GeoJsonDict([('type', 'Point'), ('coordinates', (5.0, -23.0))]), 'srid': 4326}
+    return {'geom': GeoJsonDict([('type', 'Point'), ('coordinates', [5.0, -23.0])]), 'srid': 4326}

@@ -3,7 +3,7 @@ from . import serializers
 from . import urls
 from . import views
 
-__version__ = '0.2.0'
+__version__ = '2.0.0'
 
 __all__ = [
     'coordinate_reference_system',
